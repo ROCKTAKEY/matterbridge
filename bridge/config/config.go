@@ -178,6 +178,7 @@ type Protocol struct {
 	Password               string     // IRC,mattermost,XMPP,matrix
 	PickleKey              string     // matrix
 	PrefixMessagesWithNick bool       // mattemost, slack
+	BroadcastThreadReplies bool       // slack
 	PreserveThreading      bool       // slack
 	Protocol               string     // all protocols
 	QuoteDisable           bool       // telegram,discord

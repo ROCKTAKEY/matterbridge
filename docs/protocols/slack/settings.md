@@ -29,6 +29,17 @@ both slack and slack-legacy type. Context in issue #624.
   PreserveThreading=true
   ```
 
+## BroadcastThreadReplies
+
+Broadcast Slack thread replies to the channel when `PreserveThreading` maps the message onto an existing Slack thread.
+
+- Setting: **OPTIONAL**, **RELOADABLE**
+- Format: *boolean*
+- Example:
+  ```toml
+  BroadcastThreadReplies=true
+  ```
+
 ## ShowUserTyping
 
 Enable showing "user_typing" events from across gateway when available.

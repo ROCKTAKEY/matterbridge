@@ -802,6 +802,11 @@ ShowTopicChange=false
 #OPTIONAL (default false)
 PreserveThreading=false
 
+#Broadcast Slack thread replies to the channel when PreserveThreading maps the
+#message onto an existing Slack thread.
+#OPTIONAL (default false)
+BroadcastThreadReplies=false
+
 #Enable showing "user_typing" events from across gateway when available.
 #Protip: Set your bot/user's "Full Name" to be "Someone (over chat bridge)",
 #and so the message will say "Someone (over chat bridge) is typing".
