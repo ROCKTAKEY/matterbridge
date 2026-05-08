@@ -500,8 +500,9 @@ func (b *Bmatrix) handleEdit(ev *event.Event, rmsg config.Message) bool {
 
 func (b *Bmatrix) handleReply(ev *event.Event, rmsg config.Message) bool {
 	relation := ev.Content.AsMessage().OptionalGetRelatesTo()
+	parentID := matrixParentIDForRelation(relation)
 
-	if relation == nil || relation.InReplyTo == nil || relation.InReplyTo.EventID == "" {
+	if parentID == "" {
 		return false
 	}
 
@@ -520,10 +521,23 @@ func (b *Bmatrix) handleReply(ev *event.Event, rmsg config.Message) bool {
 
 	rmsg.Text = body
 
-	rmsg.ParentID = relation.InReplyTo.EventID.String()
+	rmsg.ParentID = parentID
 	b.Remote <- rmsg
 
 	return true
+}
+
+func matrixParentIDForRelation(relation *event.RelatesTo) string {
+	if relation == nil {
+		return ""
+	}
+	if threadParent := relation.GetThreadParent(); threadParent != "" {
+		return threadParent.String()
+	}
+	if replyTo := relation.GetReplyTo(); replyTo != "" {
+		return replyTo.String()
+	}
+	return ""
 }
 
 func (b *Bmatrix) handleAttachment(ev *event.Event, rmsg config.Message) bool {
