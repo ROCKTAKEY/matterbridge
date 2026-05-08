@@ -1,4 +1,4 @@
-module github.com/matterbridge-org/matterbridge
+module github.com/ROCKTAKEY/matterbridge
 
 require (
 	github.com/Benau/tgsconverter v0.0.0-20210809170556-99f4a4f6337f
